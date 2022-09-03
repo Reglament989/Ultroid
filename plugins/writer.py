@@ -18,7 +18,7 @@
 import os
 
 from htmlwebshot import WebShot
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 from . import async_searcher, eod, get_string, text_set, ultroid_cmd
 
@@ -59,6 +59,7 @@ async def f2i(e):
     if os.path.exists(html):
         os.remove(html)
 
+flipped = true
 
 @ultroid_cmd(pattern="write( (.*)|$)")
 async def writer(e):
@@ -71,7 +72,8 @@ async def writer(e):
         return await eod(e, get_string("writer_1"))
     k = await e.eor(get_string("com_1"))
     img = Image.open("resources/extras/template.jpg")
-    draw = ImageDraw.Draw(img)
+    draw = ImageDraw.Draw(if flipped: ImageOps.flip(img) else: img)
+    flipped = !flipped
     font = ImageFont.truetype("resources/fonts/10150.ttf", 30)
     x, y = 150, 140
     lines = text_set(text)
