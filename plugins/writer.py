@@ -72,6 +72,7 @@ async def writer(e):
         return await eod(e, get_string("writer_1"))
     k = await e.eor(get_string("com_1"))
     img = Image.open("resources/extras/template.jpg")
+    global flipped
     draw = ImageDraw.Draw(ImageOps.mirror(img) if flipped else img)
     flipped = not flipped
     font = ImageFont.truetype("resources/fonts/10150.ttf", 30)
