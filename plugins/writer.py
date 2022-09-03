@@ -73,7 +73,7 @@ async def writer(e):
     k = await e.eor(get_string("com_1"))
     img = Image.open("resources/extras/template.jpg")
     draw = ImageDraw.Draw(ImageOps.flip(img) if flipped else img)
-    flipped = !flipped
+    flipped = not flipped
     font = ImageFont.truetype("resources/fonts/10150.ttf", 30)
     x, y = 150, 140
     lines = text_set(text)
