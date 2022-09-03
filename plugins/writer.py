@@ -59,7 +59,7 @@ async def f2i(e):
     if os.path.exists(html):
         os.remove(html)
 
-flipped = true
+flipped = True
 
 @ultroid_cmd(pattern="write( (.*)|$)")
 async def writer(e):
@@ -72,7 +72,7 @@ async def writer(e):
         return await eod(e, get_string("writer_1"))
     k = await e.eor(get_string("com_1"))
     img = Image.open("resources/extras/template.jpg")
-    draw = ImageDraw.Draw(ImageOps.flip(img) if flipped else img)
+    draw = ImageDraw.Draw(ImageOps.mirror(img) if flipped else img)
     flipped = not flipped
     font = ImageFont.truetype("resources/fonts/10150.ttf", 30)
     x, y = 150, 140
