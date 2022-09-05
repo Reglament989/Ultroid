@@ -73,7 +73,7 @@ async def writer(e):
     img = Image.open("resources/extras/template.jpg")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("resources/fonts/10150.ttf", 30)
-    x, y = 150, 140
+    x, y = 150, 200
     lines = text_set(text)
     line_height = font.getsize("hg")[1]
     for line in lines:
