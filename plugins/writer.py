@@ -65,15 +65,15 @@ async def writer(e):
     if e.reply_to:
         reply = await e.get_reply_message()
         text = reply.message
-    elif e.pattern_match.group(1).strip():
-        text = e.text.split(maxsplit=1)[1]
+    # elif e.pattern_match.group(1).strip():
+    #     text = e.text.split(maxsplit=1)[1]
     else:
         return await eod(e, get_string("writer_1"))
     k = await e.eor(get_string("com_1"))
     img = Image.open("resources/extras/template.jpg")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("resources/fonts/10150.ttf", 30)
-    x, y = 150, 200
+    x, y = 150, 140
     lines = text_set(text)
     line_height = font.getsize("hg")[1]
     for line in lines:
